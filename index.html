@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PorkyPal - Healthy Pigs, Happy Farmers</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --pink:#ed3d79;--pink2:#ff6598;--dark:#55313a;--muted:#866c74;
+}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+body{
+  background:linear-gradient(180deg,#ffeef4 0%,#fff8ee 100%);
+  color:var(--dark);
+}
+.page{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:22px;
+}
+.card{
+  width:min(440px,100%);min-height:760px;position:relative;overflow:hidden;
+  border-radius:30px;background:
+  radial-gradient(circle at 20% 20%,rgba(255,255,255,.9) 0 4px,transparent 5px),
+  linear-gradient(180deg,#bdefff 0%,#e6f9db 55%,#f8e6bc 100%);
+  box-shadow:0 20px 50px rgba(104,54,68,.18);
+}
+.cloud{position:absolute;background:rgba(255,255,255,.78);border-radius:50px;filter:blur(.2px)}
+.cloud.one{width:130px;height:35px;top:70px;left:-35px}
+.cloud.two{width:145px;height:40px;top:105px;right:-45px}
+.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud:before{width:55px;height:55px;left:20px;top:-23px}
+.cloud:after{width:70px;height:70px;right:15px;top:-31px}
+.content{position:relative;z-index:2;text-align:center;padding:48px 28px 34px}
+.logo{
+  width:112px;height:112px;margin:0 auto 12px;border-radius:50%;
+  background:#fff7f8;border:7px solid rgba(255,255,255,.8);
+  display:grid;place-items:center;font-size:72px;
+  box-shadow:0 10px 24px rgba(109,61,71,.12);
+}
+h1{
+  margin:0;font-size:48px;line-height:1;font-weight:900;letter-spacing:-2px;
+  color:#6b302a;text-shadow:1px 2px 0 #fff;
+}
+h1 span{color:var(--pink)}
+.tagline{
+  margin:10px auto 6px;font-size:19px;font-weight:800;line-height:1.2;
+  color:#6e3e42;max-width:280px;
+}
+.sub{font-size:12px;color:#725b61;margin-bottom:22px}
+.farm-scene{
+  height:300px;position:relative;margin:0 -10px 18px;border-radius:25px;
+  background:linear-gradient(#a9e6f8 0 47%,#91cf6c 47% 70%,#e8c58a 70%);
+  overflow:hidden;border:4px solid rgba(255,255,255,.65);
+}
+.sun{position:absolute;width:70px;height:70px;border-radius:50%;background:#ffd86b;top:22px;right:34px}
+.hill{position:absolute;bottom:65px;width:270px;height:125px;background:#75b95f;border-radius:50% 50% 0 0}
+.hill.a{left:-80px}.hill.b{right:-100px;background:#66aa56}
+.barn{
+  position:absolute;bottom:65px;left:50%;transform:translateX(-50%);
+  width:105px;height:82px;background:#d76d58;border:3px solid #a95146;
+}
+.barn:before{
+  content:"";position:absolute;left:-13px;top:-48px;border-left:64px solid transparent;
+  border-right:64px solid transparent;border-bottom:52px solid #a84e43;
+}
+.barn:after{
+  content:"";position:absolute;width:27px;height:43px;left:36px;bottom:0;background:#70443c;
+}
+.fence{position:absolute;bottom:44px;left:0;width:100%;height:40px}
+.fence:before,.fence:after{
+  content:"";position:absolute;left:0;right:0;height:7px;background:#b67c4f;box-shadow:0 23px 0 #b67c4f;
+}
+.fence:before{top:8px}
+.fence:after{top:0;background:transparent;box-shadow:none}
+.pig{
+  position:absolute;bottom:39px;left:50%;transform:translateX(-50%);
+  font-size:112px;line-height:1;filter:drop-shadow(0 7px 3px rgba(77,55,33,.18));
+}
+.flower{position:absolute;bottom:25px;font-size:25px}
+.flower.f1{left:18px}.flower.f2{right:20px}.flower.f3{left:105px;font-size:18px}
+.buttons{display:grid;gap:12px}
+.btn{
+  display:flex;align-items:center;justify-content:center;width:100%;height:53px;
+  border-radius:28px;text-decoration:none;font-weight:800;font-size:15px;
+  transition:.2s;cursor:pointer;border:0;
+}
+.btn:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(90deg,var(--pink),var(--pink2));color:#fff;box-shadow:0 9px 20px rgba(237,61,121,.24)}
+.secondary{background:rgba(255,255,255,.9);color:#8a4357;border:2px solid #f0a5ba}
+.features{display:flex;justify-content:center;gap:22px;margin-top:22px}
+.feature{font-size:10px;color:#725d63;font-weight:700}
+.feature b{display:block;font-size:20px;margin-bottom:3px}
+.footer{font-size:10px;color:#8c7279;margin-top:18px}
+@media(max-height:800px){
+ .card{min-height:700px}.content{padding-top:30px}.farm-scene{height:250px}
+ .pig{font-size:90px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="card">
+    <div class="cloud one"></div><div class="cloud two"></div>
+    <main class="content">
+      <div class="logo">🐷</div>
+      <h1>Porky<span>Pal</span></h1>
+      <div class="tagline">Healthy Pigs,<br>Happy Farmers</div>
+      <div class="sub">Smart care. Happy pigs. Better farming.</div>
+
+      <div class="farm-scene">
+        <div class="sun"></div>
+        <div class="hill a"></div><div class="hill b"></div>
+        <div class="barn"></div>
+        <div class="fence"></div>
+        <div class="pig">🐷</div>
+        <div class="flower f1">🌼</div><div class="flower f2">🌸</div><div class="flower f3">🌱</div>
+      </div>
+
+      <div class="buttons">
+        <a class="btn primary" href="dashboard.html">Get Started</a>
+        <a class="btn secondary" href="login.html">Log In</a>
+      </div>
+
+      <div class="features">
+        <div class="feature"><b>🐖</b>Manage Pigs</div>
+        <div class="feature"><b>❤️</b>Track Health</div>
+        <div class="feature"><b>🥣</b>Manage Feed</div>
+      </div>
+      <div class="footer">PorkyPal · Your Farm's Best Friend ♥</div>
+    </main>
+  </div>
+</div>
+</body>
+</html>

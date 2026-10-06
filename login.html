@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PorkyPal - Login</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --pink:#ed3d79;
+  --pink2:#ff6699;
+  --dark:#55313a;
+  --muted:#8b737a;
+}
+body{
+  margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(180deg,#ffeef4,#fff8ee);
+  color:var(--dark);
+}
+.page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px}
+.login-card{
+  width:min(420px,100%);background:rgba(255,255,255,.97);
+  border-radius:30px;padding:30px 28px 25px;
+  box-shadow:0 20px 55px rgba(91,48,64,.16);
+  border:1px solid #f7e3e9;
+}
+.logo{
+  width:82px;height:82px;margin:0 auto 10px;border-radius:50%;
+  display:grid;place-items:center;font-size:54px;
+  background:#fff2f5;border:5px solid #fff;
+  box-shadow:0 8px 20px rgba(120,50,75,.12);
+}
+.brand{text-align:center}
+.brand h1{margin:0;font-size:38px;font-weight:900;letter-spacing:-1.5px;color:#69322c}
+.brand h1 span{color:var(--pink)}
+.brand p{margin:6px 0 25px;color:var(--muted);font-size:13px}
+.welcome{text-align:center;margin-bottom:22px}
+.welcome h2{margin:0 0 5px;font-size:22px}
+.welcome p{margin:0;color:var(--muted);font-size:12px}
+.form-group{margin-bottom:15px}
+label{display:block;font-size:12px;font-weight:800;margin:0 0 7px}
+.input-wrap{position:relative}
+input{
+  width:100%;height:50px;border:1px solid #eadde2;border-radius:14px;
+  outline:none;padding:0 15px;font-size:14px;color:var(--dark);
+  background:#fffafb;transition:.2s;
+}
+input:focus{border-color:#ee78a1;box-shadow:0 0 0 4px rgba(237,61,121,.09)}
+.password-toggle{
+  position:absolute;right:8px;top:6px;height:38px;padding:0 10px;
+  border:0;background:transparent;color:#b55b79;font-size:12px;font-weight:700;cursor:pointer;
+}
+.options{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 19px;font-size:11px}
+.remember{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.remember input{width:15px;height:15px;margin:0;accent-color:var(--pink)}
+.forgot{color:var(--pink);text-decoration:none;font-weight:800}
+.btn{
+  width:100%;height:52px;border:0;border-radius:27px;
+  background:linear-gradient(90deg,var(--pink),var(--pink2));
+  color:#fff;font-size:15px;font-weight:800;cursor:pointer;
+  box-shadow:0 10px 22px rgba(237,61,121,.22);transition:.2s;
+}
+.btn:hover{transform:translateY(-2px)}
+.divider{display:flex;align-items:center;gap:10px;margin:23px 0 18px;color:#b29da4;font-size:10px}
+.divider:before,.divider:after{content:"";height:1px;background:#eee1e6;flex:1}
+.signup{text-align:center;font-size:12px;color:var(--muted)}
+.signup a{color:var(--pink);font-weight:800;text-decoration:none}
+.back{
+  display:block;text-align:center;margin-top:18px;color:#90777f;
+  font-size:11px;text-decoration:none;
+}
+.message{
+  display:none;background:#fff0f3;border:1px solid #f6cad7;color:#c43765;
+  padding:10px 12px;border-radius:11px;font-size:11px;margin-bottom:14px;text-align:center;
+}
+.message.show{display:block}
+.pig-row{text-align:center;margin-top:19px;font-size:22px;letter-spacing:5px}
+</style>
+</head>
+<body>
+<div class="page">
+  <section class="login-card">
+    <div class="logo">🐷</div>
+
+    <div class="brand">
+      <h1>Porky<span>Pal</span></h1>
+      <p>Healthy Pigs, Happy Farmers</p>
+    </div>
+
+    <div class="welcome">
+      <h2>Welcome Back! 👋</h2>
+      <p>Log in to manage your pigs and farm.</p>
+    </div>
+
+    <div id="message" class="message">Please enter your username or email and password.</div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input id="username" name="username" type="text"
+               placeholder="Enter your username or email" autocomplete="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrap">
+          <input id="password" name="password" type="password"
+                 placeholder="Enter your password" autocomplete="current-password" required>
+          <button type="button" class="password-toggle" onclick="togglePassword()">Show</button>
+        </div>
+      </div>
+
+      <div class="options">
+        <label class="remember">
+          <input type="checkbox" id="remember">
+          Remember me
+        </label>
+        <a class="forgot" href="#" onclick="forgotPassword(event)">Forgot Password?</a>
+      </div>
+
+      <button class="btn" type="submit">Log In</button>
+    </form>
+
+    <div class="divider">OR</div>
+
+    <div class="signup">
+      Don't have an account?
+      <a href="register.html">Create Account</a>
+    </div>
+
+    <a class="back" href="index.html">← Back to PorkyPal</a>
+    <div class="pig-row">🐷 ♥ 🐷</div>
+  </section>
+</div>
+
+<script>
+function togglePassword(){
+  const password=document.getElementById("password");
+  const button=document.querySelector(".password-toggle");
+  if(password.type==="password"){
+    password.type="text";
+    button.textContent="Hide";
+  }else{
+    password.type="password";
+    button.textContent="Show";
+  }
+}
+
+function forgotPassword(event){
+  event.preventDefault();
+  const message=document.getElementById("message");
+  message.textContent="Password recovery is not connected yet.";
+  message.classList.add("show");
+}
+
+document.getElementById("loginForm").addEventListener("submit",function(event){
+  event.preventDefault();
+
+  const username=document.getElementById("username").value.trim();
+  const password=document.getElementById("password").value.trim();
+  const message=document.getElementById("message");
+
+  if(!username || !password){
+    message.textContent="Please enter your username or email and password.";
+    message.classList.add("show");
+    return;
+  }
+
+  /*
+    Front-end demo:
+    Connect this form to your PHP login system here.
+    Example:
+      fetch("login.php", { method:"POST", body:new FormData(this) })
+  */
+
+  window.location.href="dashboard.html";
+});
+</script>
+</body>
+</html>
